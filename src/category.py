@@ -6,7 +6,8 @@ class Category:
     category_count = 0  # Общее число категорий
     product_count = 0   # Общее число товаров во всех категориях
 
-    def __init__(self, name: str, description: str, products: List[Product]):
+    def __init__(self, name, description, products):
+        self._products = None
         self.name = name
         self.description = description
         self.products = products
@@ -28,3 +29,9 @@ class Category:
             f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
             for product in self.__products
         )
+    @products.setter
+    def products(self, value):
+            # Можно добавить проверку типа, например:
+            if not isinstance(value, list):
+                raise TypeError("products должно быть списком")
+            self._products = value

@@ -20,14 +20,14 @@ class Product:
 
     @property
     def price(self):
-        return self._price
+        return self.__price
 
     @price.setter
     def price(self, value):
         if value <= 0:
             print("Цена не должна быть нулевой или отрицательной")
         else:
-            self._price = value
+            self.__price = value
 
     def __repr__(self):
         return f"Product({self.name}, {self.price}, {self.description}, {self.quantity})"
