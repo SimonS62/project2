@@ -5,7 +5,7 @@ class Product:
         self.price = price
         self.quantity = quantity
         self.name = name
-        self._price = price  # приватный атрибут цены
+        self.__price = price  # приватный атрибут цены
         self.description = description
         self.quantity = quantity
 
