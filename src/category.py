@@ -35,3 +35,27 @@ class Category:
             if not isinstance(value, list):
                 raise TypeError("products должно быть списком")
             self._products = value
+
+    def __str__(self):
+        total_quantity = sum(p.quantity for p in self.products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
+
+class CategoryIterator:
+    def __init__(self, category):
+        self._category = category
+        self._index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._index < len(self._category.products):
+            result = self._category.products[self._index]
+            self._index += 1
+            return result
+        else:
+            raise StopIteration()
+
+    def __iter__(self):
+        return CategoryIterator(self)
