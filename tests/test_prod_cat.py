@@ -2,6 +2,7 @@ import unittest
 import pytest
 from src.category import Category
 from src.product import Product
+from src.product import Smartphone, LawnGrass
 
 
 class TestProductAndCategory(unittest.TestCase):
@@ -121,7 +122,39 @@ def test_add_with_non_product():
     with pytest.raises(TypeError):
         _ = p + "not a product"
 
+class TestSmartphonesStrAndLawnGrassStr(unittest.TestCase):
+    def test_add_same_type_smartphones():
+        s1 = Smartphone("ModelX", 500.0, "desc", 3,
+                        efficiency="High", model="X", memory="64GB", color="Black")
+        s2 = Smartphone("ModelX", 500.0, "desc", 2,
+                        efficiency="High", model="X", memory="64GB", color="Black")
 
-# В конце файла оставьте только один вызов unittest.main()
+        result = s1 + s2
+
+        assert isinstance(result, Smartphone)
+        assert result.quantity == 5
+
+
+    def test_add_same_type_grass():
+        g1 = LawnGrass("SeedA", 10.0, "desc", 20,
+                       country="Canada", germination_period=14, color="Green")
+        g2 = LawnGrass("SeedA", 10.0, "desc", 30,
+                       country="Canada", germination_period=14, color="Green")
+
+        result = g1 + g2
+
+        assert isinstance(result, LawnGrass)
+        assert result.quantity == 50
+
+    def test_add_different_types_raises():
+        s1 = Smartphone("ModelY", 600.0, "desc", 4,
+                        efficiency="Medium", model="Y", memory="128GB", color="White")
+        g1 = LawnGrass("SeedB", 15.0, "desc", 10,
+                       country="USA", germination_period=14, color="Green")
+
+        with pytest.raises(TypeError):
+            _ = s1 + g1
+
+
 if __name__ == '__main__':
     unittest.main()
