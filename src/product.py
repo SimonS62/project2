@@ -24,10 +24,30 @@ class Product:
 
     @price.setter
     def price(self, value):
-        if value <= 0:
-            print("Цена не должна быть нулевой или отрицательной")
+        if isinstance(value, (int, float)):
+            numeric_value = value
+        elif isinstance(value, str):
+            try:
+                numeric_value = float(value)
+            except ValueError:
+                raise TypeError("Цена должна быть числом")
         else:
-            self.__price = value
+            raise TypeError("Цена должна быть числом")
+
+        if numeric_value <= 0:
+            raise ValueError("Цена должна быть больше нуля")
+
+        self.__price = numeric_value
 
     def __repr__(self):
         return f"Product({self.name}, {self.price}, {self.description}, {self.quantity})"
+
+    def __str__(self):
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        if not isinstance(other, Product):
+            return NotImplemented
+        return (self.price * self.quantity) + (other.price * other.quantity)
+
+
