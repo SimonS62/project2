@@ -1,4 +1,3 @@
-from typing import List
 from src.product import Product
 
 
@@ -7,7 +6,7 @@ class Category:
     product_count = 0   # Общее число товаров во всех категориях
 
     def __init__(self, name, description, products):
-        self._products = None
+        self._products = []
         self.name = name
         self.description = description
         self.products = products

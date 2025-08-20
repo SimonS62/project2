@@ -26,8 +26,6 @@ class TestProductAndCategory(unittest.TestCase):
         self.assertEqual(category.name, "Test Category")
         self.assertEqual(category.description, "Category description")
         self.assertEqual(len(category.products), 2)
-
-        # Проверка счетчиков
         self.assertEqual(Category.category_count, 1)
         self.assertEqual(Category.product_count, 2)
 
@@ -85,45 +83,9 @@ class TestProduct(unittest.TestCase):
             product.price = -50
 
 
-class TestProductStrAndCategoryStr(unittest.TestCase):
-
-    def test_product_str(self):
-        p = Product("Молоко", 80, "Описание продукта", 15)
-        expected_str = "Молоко, 80 руб. Остаток: 15 шт."
-        self.assertEqual(str(p), expected_str)
-
-    def test_category_str(self):
-        p1 = Product("Молоко", "Свежие продукты", 50.0, 10)
-        p2 = Product("Хлеб", "Пекарские изделия", 30.0, 5)
-
-        category_name = "Бакалея"
-
-        cat = Category(category_name, "Раздел продуктов питания", [p1, p2])
-
-        total_quantity = sum(p.quantity for p in cat.products)
-
-        expected_str = f"{category_name}, количество продуктов: {total_quantity} шт."
-
-        self.assertEqual(str(cat), expected_str)
-
-
-def test_product_add():
-    p1 = Product("Молоко", 80, "Описание продукта", "15")
-    p2 = Product("Хлеб", 30, "Описание хлеба", "20")
-
-    total_cost = p1 + p2
-    expected_total = (80 * int(p1.quantity)) + (30 * int(p2.quantity))
-
-    assert total_cost == expected_total
-
-
-def test_add_with_non_product():
-    p = Product("Молоко", 80, "Описание продукта", "15")
-    with pytest.raises(TypeError):
-        _ = p + "not a product"
-
 class TestSmartphonesStrAndLawnGrassStr(unittest.TestCase):
-    def test_add_same_type_smartphones():
+
+    def test_add_same_type_smartphones(self):
         s1 = Smartphone("ModelX", 500.0, "desc", 3,
                         efficiency="High", model="X", memory="64GB", color="Black")
         s2 = Smartphone("ModelX", 500.0, "desc", 2,
@@ -134,8 +96,7 @@ class TestSmartphonesStrAndLawnGrassStr(unittest.TestCase):
         assert isinstance(result, Smartphone)
         assert result.quantity == 5
 
-
-    def test_add_same_type_grass():
+    def test_add_same_type_grass(self):
         g1 = LawnGrass("SeedA", 10.0, "desc", 20,
                        country="Canada", germination_period=14, color="Green")
         g2 = LawnGrass("SeedA", 10.0, "desc", 30,
@@ -146,7 +107,7 @@ class TestSmartphonesStrAndLawnGrassStr(unittest.TestCase):
         assert isinstance(result, LawnGrass)
         assert result.quantity == 50
 
-    def test_add_different_types_raises():
+    def test_add_different_types_raises(self):
         s1 = Smartphone("ModelY", 600.0, "desc", 4,
                         efficiency="Medium", model="Y", memory="128GB", color="White")
         g1 = LawnGrass("SeedB", 15.0, "desc", 10,

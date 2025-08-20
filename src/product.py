@@ -1,10 +1,7 @@
 class Product:
     def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
-        self.description = description
-        self.price = price
         self.quantity = quantity
-        self.name = name
         self.__price = price  # приватный атрибут цены
         self.description = description
         self.quantity = quantity
@@ -24,6 +21,7 @@ class Product:
 
     @price.setter
     def price(self, value):
+        # Проверка типа и преобразование
         if isinstance(value, (int, float)):
             numeric_value = value
         elif isinstance(value, str):
@@ -34,9 +32,11 @@ class Product:
         else:
             raise TypeError("Цена должна быть числом")
 
+        # Проверка на положительность
         if numeric_value <= 0:
             raise ValueError("Цена должна быть больше нуля")
 
+        # Установка значения
         self.__price = numeric_value
 
     def __repr__(self):
@@ -59,6 +59,22 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+    def __add__(self, other):
+        if not isinstance(other, Smartphone):
+            raise TypeError("Можно складывать только смартфоны")
+        new_quantity = self.quantity + other.quantity
+        # Создаем новый объект Smartphone с объединенными свойствами
+        return Smartphone(
+            name=self.name,
+            price=self.price,
+            description=self.description,
+            quantity=new_quantity,
+            efficiency=self.efficiency,
+            model=self.model,
+            memory=self.memory,
+            color=self.color
+        )
+
 class LawnGrass(Product):
     def __init__(self, name, price, description, quantity,
                  country, germination_period, color):
@@ -67,17 +83,16 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
-def __add__(self, other):
-    if type(self) != type(other):
-        raise TypeError("Можно складывать только товары одного типа")
-    # Например, складываем количество или цену (зависит от логики)
-    new_quantity = self.quantity + other.quantity
-    # Можно вернуть новый объект или обновить текущий — зависит от требований.
-    # Предположим создание нового объекта:
-    return type(self)(
-        name=self.name,
-        price=self.price,
-        description=self.description,
-        quantity=new_quantity,
-        # добавьте остальные свойства по необходимости
-    )
+    def __add__(self, other):
+        if not isinstance(other, LawnGrass):
+            return NotImplemented
+        new_quantity = self.quantity + other.quantity
+        return LawnGrass(
+            name=self.name,
+            price=self.price,
+            description=self.description,
+            quantity=new_quantity,
+            country=self.country,
+            germination_period=self.germination_period,
+            color=self.color
+        )

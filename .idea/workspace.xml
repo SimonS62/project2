@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf2c782a-3e06-426f-a351-4bf230e1725b" name="Changes" comment="Homework 14.3">
+    <list default="true" id="cf2c782a-3e06-426f-a351-4bf230e1725b" name="Changes" comment="Homework 16.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/category.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/product.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/product.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_prod_cat.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_prod_cat.py" afterDir="false" />
     </list>
@@ -37,7 +38,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/homework_14.2" />
+        <entry key="$PROJECT_DIR$" value="feature/homework_14.3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,10 +71,10 @@
     "Python.main.executor": "Run",
     "Python.product.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#3 on feature/homework__14.3"
+    "git-widget-placeholder": "#4 on feature/homework__16.1"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests in test_prod_cat.py">
     <configuration name="category" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonProject4" />
       <option name="ENV_FILES" value="" />
@@ -157,8 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests in test_prod_cat.py" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.product" />
         <item itemvalue="Python.category" />
       </list>
@@ -220,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755535134564</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Homework 16.1">
+      <option name="closed" value="true" />
+      <created>1755616738370</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755616738370</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,7 +243,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/homework_14.3" />
+                        <option value="feature/homework_16.1" />
                       </list>
                     </value>
                   </entry>
@@ -250,6 +259,7 @@
     <MESSAGE value="Homework 14.1" />
     <MESSAGE value="Homework 14.2" />
     <MESSAGE value="Homework 14.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Homework 14.3" />
+    <MESSAGE value="Homework 16.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Homework 16.1" />
   </component>
 </project>
