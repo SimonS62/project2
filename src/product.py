@@ -48,12 +48,17 @@ class Product:
     def __add__(self, other):
         if not isinstance(other, Product):
             return NotImplemented
-        return (self.price * self.quantity) + (other.price * other.quantity)
+        if type(self) != type(other):
+            raise TypeError(f"Нельзя складывать {type(self).__name__} с {type(other).__name__}")
+        # Можно объединить объекты или вернуть сумму стоимости
+        # Например, возвращаем сумму стоимости обоих продуктов:
+        total_value = (self.price * self.quantity) + (other.price * other.quantity)
+        return total_value
 
 class Smartphone(Product):
     def __init__(self, name, price, description, quantity,
-                 efficiency, model, memory, color):
-        super().__init__(name, price, description, quantity)
+                 efficiency=None, model=None, memory=None, color=None):
+        super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
@@ -63,7 +68,7 @@ class Smartphone(Product):
         if not isinstance(other, Smartphone):
             raise TypeError("Можно складывать только смартфоны")
         new_quantity = self.quantity + other.quantity
-        # Создаем новый объект Smartphone с объединенными свойствами
+        # Создаем новый объект Smartphone с объединенными свойствами (можно выбрать логику объединения)
         return Smartphone(
             name=self.name,
             price=self.price,
@@ -77,15 +82,15 @@ class Smartphone(Product):
 
 class LawnGrass(Product):
     def __init__(self, name, price, description, quantity,
-                 country, germination_period, color):
-        super().__init__(name, price, description, quantity)
+                 country=None, germination_period=None, color=None):
+        super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
 
     def __add__(self, other):
         if not isinstance(other, LawnGrass):
-            return NotImplemented
+            raise TypeError("Можно складывать только газонную траву")
         new_quantity = self.quantity + other.quantity
         return LawnGrass(
             name=self.name,

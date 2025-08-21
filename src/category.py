@@ -18,8 +18,11 @@ class Category:
         self.description = description
         self.__products = []  # приватный список товаров
 
-    def add_product(self, product: Product):
+    def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты типа Product или его подклассы")
         self.__products.append(product)
+        Category.product_count += 1
 
     @property
     def products(self):
@@ -28,9 +31,9 @@ class Category:
             f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
             for product in self.__products
         )
+
     @products.setter
     def products(self, value):
-            # Можно добавить проверку типа, например:
             if not isinstance(value, list):
                 raise TypeError("products должно быть списком")
             self._products = value
