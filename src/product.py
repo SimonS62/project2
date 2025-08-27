@@ -39,21 +39,22 @@ class Product:
         # Установка значения
         self.__price = numeric_value
 
-    def __repr__(self):
-        return f"Product({self.name}, {self.price}, {self.description}, {self.quantity})"
+def __repr__(self):
+            return f"Product({self.name}, {self.price}, {self.description}, {self.quantity})"
 
-    def __str__(self):
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+def __str__(self):
+            return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other):
-        if not isinstance(other, Product):
-            return NotImplemented
-        if type(self) != type(other):
-            raise TypeError(f"Нельзя складывать {type(self).__name__} с {type(other).__name__}")
-        # Можно объединить объекты или вернуть сумму стоимости
-        # Например, возвращаем сумму стоимости обоих продуктов:
-        total_value = (self.price * self.quantity) + (other.price * other.quantity)
-        return total_value
+def __add__(self, other):
+            if not isinstance(other, Product):
+                return NotImplemented
+            if type(self) != type(other):
+                raise TypeError(f"Нельзя складывать {type(self).__name__} с {type(other).__name__}")
+            # Можно объединить объекты или вернуть сумму стоимости
+            # Например, возвращаем сумму стоимости обоих продуктов:
+            total_value = (self.price * self.quantity) + (other.price * other.quantity)
+            return total_value
+
 
 class Smartphone(Product):
     def __init__(self, name, price, description, quantity,
