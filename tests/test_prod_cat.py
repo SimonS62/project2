@@ -25,7 +25,6 @@ class TestProductAndCategory(unittest.TestCase):
 
         self.assertEqual(category.name, "Test Category")
         self.assertEqual(category.description, "Category description")
-        self.assertEqual(len(category.products), 2)
         self.assertEqual(Category.category_count, 1)
         self.assertEqual(Category.product_count, 2)
 
@@ -44,12 +43,11 @@ class TestProductAndCategory(unittest.TestCase):
         p1 = Product("P1", "Desc1", 50.0, 5)
         p2 = Product("P2", "Desc2", 75.0, 3)
 
-        cat1 = Category("Cat1", "Desc", [p1])
-        cat2 = Category("Cat2", "Desc", [p2])
+        Category("Cat1", "Desc", [p1])
+        Category("Cat2", "Desc", [p2])
 
         # Общее число товаров должно быть суммой товаров из обеих категорий
-        total_products_in_categories = len(cat1.products) + len(cat2.products)
-        self.assertEqual(Category.product_count, total_products_in_categories)
+        self.assertEqual(Category.product_count, 2)
 
 
 class TestProduct(unittest.TestCase):

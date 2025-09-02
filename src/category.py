@@ -6,7 +6,6 @@ class Category:
     product_count = 0   # Общее число товаров во всех категориях
 
     def __init__(self, name, description, products):
-        self._products = []
         self.name = name
         self.description = description
         self.products = products
@@ -36,7 +35,7 @@ class Category:
     def products(self, value):
             if not isinstance(value, list):
                 raise TypeError("products должно быть списком")
-            self._products = value
+            self.__products = value
 
     def __str__(self):
         total_quantity = sum(p.quantity for p in self.products)
