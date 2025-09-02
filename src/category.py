@@ -1,4 +1,3 @@
-from typing import List
 from src.product import Product
 
 
@@ -7,7 +6,6 @@ class Category:
     product_count = 0   # Общее число товаров во всех категориях
 
     def __init__(self, name, description, products):
-        self._products = None
         self.name = name
         self.description = description
         self.products = products
@@ -19,8 +17,11 @@ class Category:
         self.description = description
         self.__products = []  # приватный список товаров
 
-    def add_product(self, product: Product):
+    def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты типа Product или его подклассы")
         self.__products.append(product)
+        Category.product_count += 1
 
     @property
     def products(self):
@@ -29,12 +30,12 @@ class Category:
             f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
             for product in self.__products
         )
+
     @products.setter
     def products(self, value):
-            # Можно добавить проверку типа, например:
             if not isinstance(value, list):
                 raise TypeError("products должно быть списком")
-            self._products = value
+            self.__products = value
 
     def __str__(self):
         total_quantity = sum(p.quantity for p in self.products)
