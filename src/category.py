@@ -23,6 +23,15 @@ class Category:
         self.__products.append(product)
         Category.product_count += 1
 
+    def average_price(self):
+        try:
+            total = sum(product.price for product in self.products)
+            count = len(self.products)
+            return total / count
+        except ZeroDivisionError:
+            return 0
+
+
     @property
     def products(self):
         # Возвращаем список строк с информацией о товарах

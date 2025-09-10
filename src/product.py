@@ -6,6 +6,11 @@ class Product(BaseProduct):
         super().__init__(name, description)
         self.quantity = quantity
         self.__price = price
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        super().__init__(name, description)
+        self.__price = price
+        self.quantity = quantity
 
     def get_info(self):
         return f"Product: {self.name}, Description: {self.description}"
